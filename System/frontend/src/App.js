@@ -13,6 +13,9 @@ import {
   Table,
 } from "react-bootstrap";
 
+import CarouselImageOne from "./css/img/1.jpg";
+import CarouselImageTwo from "./css/img/2.jpg";
+
 import Scrollspy from "react-scrollspy";
 
 function App() {
@@ -53,26 +56,39 @@ function App() {
         }
       >
         <Carousel.Item>
-          <img
+          {/* <img
             className="d-block w-100"
             src="css/img/2.jpg"
             alt="First slide"
-          />
-          <Carousel.Caption className="d-none d-sm-inline-block">
-            <h3>Witamy na naszej stronie</h3>
-            <p>
-              Możesz tu złożyć zamówienie na nasze pyszności, z dowozem do domu.
-            </p>
+          /> */}
+          <div
+            class="carousel-item active"
+            style={{ backgroundImage: `url(${CarouselImageOne})` }}
+          ></div>
+          <Carousel.Caption className="d-flex align-items-end justify-content-center">
+            <div>
+              <h3>Witamy na naszej stronie</h3>
+              <p>
+                Możesz tu złożyć zamówienie na nasze pyszności, z dowozem do
+                domu.
+              </p>
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img
+          <div
+            class="carousel-item active"
+            style={{ backgroundImage: `url(${CarouselImageTwo})` }}
+          ></div>
+          {/* <img
             className="d-block w-100"
             src="css/img/baner.jpg"
             alt="First slide"
-          />
-          <Carousel.Caption className="d-none d-sm-inline-block">
-            <h3>Zaloguj się aby złożyć zamówienie!</h3>
+          /> */}
+          <Carousel.Caption className="d-flex align-items-end justify-content-center">
+            <div>
+              <h3>Zaloguj się aby złożyć zamówienie!</h3>
+            </div>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
@@ -80,6 +96,32 @@ function App() {
         <Row className="middle-row">
           <Col md={4}>
             <h2 id="Imprezy">Imprezy</h2>
+            <Card>
+              <Card.Img variant="top" src="css/img/dynamic/1.jpg" />
+              <Card.Body>
+                <Card.Title>SIEBUJAJTU SOUND SYSTEM (Wojtune/Buli)</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  01.08.2020
+                </Card.Subtitle>
+                <Card.Text>
+                  2-osobowy sound system powstały z połączenia sił sąsiadujących
+                  miast - Brodnicy i Nowego Miasta Lub, serwujący podróż po
+                  wszystkim co z Reggae związane. <br />
+                  <br />
+                  Po latach znowu wracają do Nowego Miasta, gdzie przez wiele
+                  lat organizowali imprezy reggae po szyldem: REGGAE SESSION.
+                  Przez 12 lat swojej działalności, sieją pozytywną wibrację po
+                  całej Polsce, współpracując z selektorami i sound systemami z
+                  całego kraju. W sobotę będziecie mogli usłyszeć, klasyki
+                  reggae, jak i nowości z wielkiej skarbnicy tej muzyki. Przyjdź
+                  na sesje z basem w tle: słuchaj, poczuj, doświadcz.
+                </Card.Text>
+                {/* <Card.Link href="#">Rezerwuj stolik</Card.Link> */}
+                <Button variant="custom" size="lg" block>
+                  Rezerwuj stolik
+                </Button>
+              </Card.Body>
+            </Card>
           </Col>
           <Col md={8}>
             <h2 id="Menu">Menu</h2>
@@ -158,6 +200,15 @@ function App() {
                 </tr>
               </tbody>
             </Table>
+          </Col>
+        </Row>
+        <Row>
+          <Col></Col>
+        </Row>
+        <Row>
+          <Col className="footer text-center">
+            Copyright &copy; Tomasz Jabłoński <br />
+            tjablonski@codeinq.pl
           </Col>
         </Row>
       </Container>
