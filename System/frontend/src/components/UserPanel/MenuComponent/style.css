@@ -1,0 +1,41 @@
+div.middle-row > div:last-child {
+  background-color: rgb(35, 39, 51);
+  color: white !important;
+}
+
+div.middle-row > div:last-child > h2 {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+}
+
+table.menu {
+  margin-top: 60px;
+  color: white;
+}
+
+div.menu {
+  padding: 60px 100px;
+}
+
+tbody > tr:hover {
+  background-color: rgb(42, 47, 63);
+  color: white !important;
+}
+
+.carousel-menu > .carousel-control-next,
+.carousel-menu > .carousel-control-prev {
+  width: 10%;
+  display: block;
+}
+
+.carousel-menu > a > .carousel-control-next-icon,
+.carousel-menu > a > .carousel-control-prev-icon {
+  margin-top: 300px;
+}
+
+@media (max-width: 767.98px) {
+  div.menu {
+    padding: 60px 5px;
+  }
+}

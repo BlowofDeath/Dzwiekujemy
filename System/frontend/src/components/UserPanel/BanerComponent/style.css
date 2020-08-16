@@ -1,0 +1,15 @@
+.carousel-item > div {
+  object-fit: cover;
+  height: 100% !important;
+}
+
+div.carousel-item {
+  position: relative;
+  height: 50vh;
+  min-height: 200px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

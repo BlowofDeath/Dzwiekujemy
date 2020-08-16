@@ -1,0 +1,31 @@
+html {
+  font-size: 62, 5%;
+}
+
+body > div {
+  font-family: "Charm", cursive;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 411px) {
+  div.middle-row > div {
+    padding: 10px;
+  }
+
+  body > div {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+}
+
+/*sm*/
+@media (max-width: 767.98px) {
+}
+
+@media (max-width: 991.98px) {
+}
+
+@media (max-width: 1199.98px) {
+}
