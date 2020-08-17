@@ -1,0 +1,39 @@
+/* Quick-zoom Container */
+img.zoom {
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+
+/* The Transformation */
+img.zoom:hover {
+  transform: scale(1.05);
+}
+
+.modal-header {
+  border-bottom: none;
+}
+.modal-title {
+  color: #000;
+}
+.modal-footer {
+  display: none;
+}
+
+div.gallery {
+  padding: 50px;
+  background-color: rgb(28, 34, 54);
+  -webkit-box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.73);
+  -moz-box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.73);
+  box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.73);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.gallery > div > img {
+  margin-right: 40px;
+  margin-bottom: 40px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}

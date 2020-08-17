@@ -1,0 +1,32 @@
+div.box > div > div {
+  margin: 100px 40px;
+}
+
+div.box > div > div > div {
+  background-color: rgba(22, 25, 37, 0.795);
+}
+
+div.box {
+  -webkit-box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.73);
+  -moz-box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.73);
+  box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.73);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.card-body {
+  /* min-height: 600px; */
+}
+
+div.card-body > a {
+  color: white;
+}
+
+div.card-body > a:hover {
+  color: rgb(197, 255, 238);
+}
+
+div.box > div {
+  padding-bottom: 200px;
+}

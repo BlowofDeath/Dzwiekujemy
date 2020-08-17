@@ -23,7 +23,7 @@ const BanerComponent = () => {
     >
       <Carousel.Item>
         <div
-          class="carousel-item active"
+          className="carousel-item active"
           style={{ backgroundImage: `url(${CarouselImageOne})` }}
         ></div>
         <Carousel.Caption className="d-flex align-items-end justify-content-center">
@@ -37,7 +37,7 @@ const BanerComponent = () => {
       </Carousel.Item>
       <Carousel.Item>
         <div
-          class="carousel-item active"
+          className="carousel-item active"
           style={{ backgroundImage: `url(${CarouselImageTwo})` }}
         ></div>
         <Carousel.Caption className="d-flex align-items-end justify-content-center">

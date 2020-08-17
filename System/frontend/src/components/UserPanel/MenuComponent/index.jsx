@@ -6,8 +6,8 @@ import "./style.css";
 const MenuComponent = (props) => {
   const { width } = useWindowDimensions();
   return (
-    <Col lg={8}>
-      <h2 id="Menu">Menu</h2>
+    <Col lg={{ cols: 8, order: "last" }} id="Menu">
+      <h2>Menu</h2>
       <Container fluid>
         <Carousel
           indicators={true}
