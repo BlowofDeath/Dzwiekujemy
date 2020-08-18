@@ -5,6 +5,15 @@ import menu from "./menu.json";
 import moment from "moment";
 import { ReactComponent as CartPlus } from "./img/cartplus.svg";
 
+const days = [
+  "Poniedziałek",
+  "Wtorek",
+  "Środa",
+  "Czwartek",
+  "Piątek",
+  "Sobota",
+  "Niedziela",
+];
 const category = ["Dania główne", "Zupy", "Zestaw Lunchowy"];
 
 const MenuComponent = (props) => {
@@ -13,7 +22,7 @@ const MenuComponent = (props) => {
     return date.day();
   };
 
-  const generateMenu = (day) => {
+  const generateDayMenu = (day) => {
     const thisDay = today();
     const Thead = (props) => {
       return (
@@ -69,6 +78,17 @@ const MenuComponent = (props) => {
     return dayMenu;
   };
 
+  const generateMenu = () => {
+    return days.map((day, index) => {
+      return (
+        <Carousel.Item className="h-100 menu" key={index}>
+          <h3>{day}</h3>
+          {generateDayMenu(index + 1)}
+        </Carousel.Item>
+      );
+    });
+  };
+
   return (
     <Col lg={{ cols: 8, order: "last" }} id="Menu">
       <h2>Menu</h2>
@@ -90,34 +110,7 @@ const MenuComponent = (props) => {
           className="carousel-menu"
           defaultActiveIndex={today() - 1}
         >
-          <Carousel.Item className="h-100 menu">
-            <h3>Poniedziałek</h3>
-            {generateMenu(1)}
-          </Carousel.Item>
-          <Carousel.Item className="h-100 menu">
-            <h3>Wtorek</h3>
-            {generateMenu(2)}
-          </Carousel.Item>
-          <Carousel.Item className="h-100 menu">
-            <h3>Środa</h3>
-            {generateMenu(3)}
-          </Carousel.Item>
-          <Carousel.Item className="h-100 menu">
-            <h3>Czwartek</h3>
-            {generateMenu(4)}
-          </Carousel.Item>
-          <Carousel.Item className="h-100 menu">
-            <h3>Piątek</h3>
-            {generateMenu(5)}
-          </Carousel.Item>
-          <Carousel.Item className="h-100 menu">
-            <h3>Sobota</h3>
-            {generateMenu(6)}
-          </Carousel.Item>
-          <Carousel.Item className="h-100 menu">
-            <h3>Niedziela</h3>
-            {generateMenu(7)}
-          </Carousel.Item>
+          {generateMenu()}
         </Carousel>
       </Container>
     </Col>

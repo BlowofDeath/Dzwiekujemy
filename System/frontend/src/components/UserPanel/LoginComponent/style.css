@@ -1,0 +1,15 @@
+.google {
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.facebook {
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.modal-open {
+  overflow-y: auto;
+}

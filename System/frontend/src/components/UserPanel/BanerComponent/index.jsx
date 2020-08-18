@@ -2,8 +2,8 @@ import React from "react";
 import "./style.css";
 import { Carousel } from "react-bootstrap";
 
-import CarouselImageOne from "./../../../css/img/1.jpg";
-import CarouselImageTwo from "./../../../css/img/2.jpg";
+import CarouselImageOne from "./img/1.jpg";
+import CarouselImageTwo from "./img/2.jpg";
 
 const BanerComponent = () => {
   return (

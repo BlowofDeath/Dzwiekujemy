@@ -17,7 +17,9 @@ const BoxComponent = (props) => {
         <Card className="h-100 zoom">
           <Card.Img variant="top" src={c1} />
           <Card.Body>
-            <Card.Title id="KimJesteśmy">Kim jesteśmy?</Card.Title>
+            <Card.Title id="KimJesteśmy" className="box-title">
+              Kim jesteśmy?
+            </Card.Title>
             <Card.Text>
               Restauracja Dźwiękujemy jest ciekawym punktem na mapie naszego
               województwa, który łączy pyszną kuchnię i wydarzenia artystyczne.{" "}
@@ -41,12 +43,13 @@ const BoxComponent = (props) => {
         <Card className="h-100 zoom">
           <Card.Img variant="top" src={c2} />
           <Card.Body>
-            <Card.Title>Kontakt</Card.Title>
+            <Card.Title className="box-title">Kontakt</Card.Title>
+            E-mail:{" "}
             <Card.Link href="mailto:biuro.dzwiekujemy@gmail.com">
-              E-mail: biuro.dzwiekujemy@gmail.com
+              biuro.dzwiekujemy@gmail.com
             </Card.Link>
             <br />
-            <Card.Link href="tel:+48533463599">Telefon: 533 463 599</Card.Link>
+            Telefon: <Card.Link href="tel:+48533463599">533 463 599</Card.Link>
             <div>
               <iframe
                 src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fdzwiekujemy%2F&width=114&layout=button&action=like&size=small&share=true&height=65&appId"
@@ -59,8 +62,7 @@ const BoxComponent = (props) => {
                 title="Facebook"
               ></iframe>
             </div>
-
-            <Card.Title>Praca</Card.Title>
+            <Card.Title className="box-title">Praca</Card.Title>
             <Card.Text>Aktualnie nie poszukujemy</Card.Text>
           </Card.Body>
         </Card>
@@ -69,7 +71,7 @@ const BoxComponent = (props) => {
         <Card className="h-100 zoom">
           <Card.Img variant="top" src={c3} />
           <Card.Body>
-            <Card.Title>Jak dotrzeć?</Card.Title>
+            <Card.Title className="box-title">Jak dotrzeć?</Card.Title>
             <div className="embed-responsive embed-responsive-4by3">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9512.701242118324!2d19.5939975!3d53.4116908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6eacb414ef9c8a8f!2sDzwi%C4%99kujemy!5e0!3m2!1spl!2spl!4v1597657410922!5m2!1spl!2spl"

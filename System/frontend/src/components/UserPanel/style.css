@@ -2,6 +2,11 @@ html {
   font-size: 62, 5%;
 }
 
+body {
+  padding-right: 0px !important;
+  /*For proper work of modals*/
+}
+
 body > div {
   font-family: "Charm", cursive;
   font-size: 1.3rem;

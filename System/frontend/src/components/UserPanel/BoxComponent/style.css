@@ -40,6 +40,11 @@ div.box > div {
   transition: transform 0.25s, visibility 0.25s ease-in;
 }
 
+.box-title {
+  font-size: 2rem;
+  padding: 20px 0px;
+}
+
 /* The Transformation */
 .zoom:hover {
   transform: scale(1.03);
