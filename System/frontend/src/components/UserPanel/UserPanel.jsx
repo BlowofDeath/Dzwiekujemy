@@ -14,7 +14,7 @@ import "./style.css";
 
 const UserPanel = (props) => {
   return (
-    <Container fluid style={{ padding: 0 }}>
+    <Container fluid style={{ padding: 0 }} id="home">
       <NavbarComponent />
       <BanerComponent />
       <Container fluid>

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "dish": "Schabowy z ziemniakami",
+    "description": "dodatki i surówki",
+    "price": 18,
+    "dayOfWeek": 1,
+    "category": "Dania główne"
+  },
+  {
+    "id": 2,
+    "dish": "Burger wołowy",
+    "description": "z dodatkami",
+    "price": 19,
+    "dayOfWeek": 1,
+    "category": "Dania główne"
+  },
+  {
+    "id": 3,
+    "dish": "Chłodnik",
+    "description": "",
+    "price": 11,
+    "dayOfWeek": 1,
+    "category": "Zupy"
+  },
+  {
+    "id": 4,
+    "dish": "Pomidorowa",
+    "description": "",
+    "price": 9,
+    "dayOfWeek": 1,
+    "category": "Zupy"
+  },
+  {
+    "id": 5,
+    "dish": "Pomidorowa + szkrzydełka glazurowe",
+    "description": "",
+    "price": 18.9,
+    "dayOfWeek": 1,
+    "category": "Zestaw Lunchowy"
+  },
+  {
+    "id": 6,
+    "dish": "Chłodnik + burger wegetariański",
+    "description": "",
+    "price": 18.9,
+    "dayOfWeek": 1,
+    "category": "Zestaw Lunchowy"
+  },
+  {
+    "id": 5,
+    "dish": "Pomidorowa + szkrzydełka glazurowe",
+    "description": "",
+    "price": 18.9,
+    "dayOfWeek": 2,
+    "category": "Zestaw Lunchowy"
+  },
+  {
+    "id": 6,
+    "dish": "Chłodnik + burger wegetariański",
+    "description": "",
+    "price": 18.9,
+    "dayOfWeek": 2,
+    "category": "Zestaw Lunchowy"
+  }
+]

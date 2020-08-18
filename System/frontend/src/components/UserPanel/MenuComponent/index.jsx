@@ -1,8 +1,74 @@
 import React from "react";
 import { Container, Carousel, Col, Table } from "react-bootstrap";
 import "./style.css";
+import menu from "./menu.json";
+import moment from "moment";
+import { ReactComponent as CartPlus } from "./img/cartplus.svg";
+
+const category = ["Dania główne", "Zupy", "Zestaw Lunchowy"];
 
 const MenuComponent = (props) => {
+  const today = () => {
+    const date = moment();
+    return date.day();
+  };
+
+  const generateMenu = (day) => {
+    const thisDay = today();
+    const Thead = (props) => {
+      return (
+        <thead>
+          <tr>
+            <th>Potrawa</th>
+            <th>Cena</th>
+            <th></th>
+          </tr>
+        </thead>
+      );
+    };
+    const dayMenu = category.map((cat, catIndex) => {
+      return (
+        <React.Fragment key={catIndex}>
+          <h4 className="dish-category">{cat}</h4>
+          <Table className="menu">
+            <Thead />
+            <tbody>
+              {menu.map((menuItem, index) => {
+                if (menuItem.category === cat && menuItem.dayOfWeek === day) {
+                  let cartDisplay =
+                    thisDay === menuItem.dayOfWeek ? null : "d-none";
+                  return (
+                    <tr key={index}>
+                      <td>
+                        {menuItem.dish} <br />
+                        <i>{menuItem.description}</i>
+                      </td>
+                      <td>{menuItem.price} zł</td>
+                      <td>
+                        <a
+                          className={`add-to-cart ${cartDisplay}`}
+                          href="#home"
+                        >
+                          <CartPlus className="d-inline d-sm-none " />
+                          <span className="d-none d-sm-inline">
+                            Dodaj do koszyka
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                  );
+                }
+                return null;
+              })}
+            </tbody>
+          </Table>
+        </React.Fragment>
+      );
+    });
+
+    return dayMenu;
+  };
+
   return (
     <Col lg={{ cols: 8, order: "last" }} id="Menu">
       <h2>Menu</h2>
@@ -22,189 +88,35 @@ const MenuComponent = (props) => {
             />
           }
           className="carousel-menu"
+          defaultActiveIndex={today() - 1}
         >
           <Carousel.Item className="h-100 menu">
             <h3>Poniedziałek</h3>
-            <Table className="menu">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Potrawa</th>
-                  <th>Cena</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Schabowy z ziemniakami <br />
-                    <i>Do tego surówka z marchwi</i>
-                  </td>
-                  <td>18 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Barscz ukraiński</td>
-                  <td>10zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Schabowy z ziemniakami <br />
-                    <i>Do tego surówka z marchwi</i>
-                  </td>
-                  <td>18 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Barscz ukraiński</td>
-                  <td>10zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Schabowy z ziemniakami <br />
-                    <i>Do tego surówka z marchwi</i>
-                  </td>
-                  <td>18 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Barscz ukraiński</td>
-                  <td>10zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-              </tbody>
-            </Table>
+            {generateMenu(1)}
           </Carousel.Item>
           <Carousel.Item className="h-100 menu">
             <h3>Wtorek</h3>
-            <Table hover className="menu">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Potrawa</th>
-                  <th>Cena</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Schabowy z ziemniakami <br />
-                    <i>Do tego surówka z marchwi</i>
-                  </td>
-                  <td>18 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Barscz ukraiński</td>
-                  <td>10zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Schabowy z ziemniakami <br />
-                    <i>Do tego surówka z marchwi</i>
-                  </td>
-                  <td>18 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Barscz ukraiński</td>
-                  <td>10zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Schabowy z ziemniakami <br />
-                    <i>Do tego surówka z marchwi</i>
-                  </td>
-                  <td>18 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Barscz ukraiński</td>
-                  <td>10zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    Schabowy z ziemniakami <br />
-                    <i>Do tego surówka z marchwi</i>
-                  </td>
-                  <td>18 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Barscz ukraiński</td>
-                  <td>10zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Burger wołowy</td>
-                  <td>16 zł</td>
-                  <td>Dodaj do koszyka</td>
-                </tr>
-              </tbody>
-            </Table>
+            {generateMenu(2)}
+          </Carousel.Item>
+          <Carousel.Item className="h-100 menu">
+            <h3>Środa</h3>
+            {generateMenu(3)}
+          </Carousel.Item>
+          <Carousel.Item className="h-100 menu">
+            <h3>Czwartek</h3>
+            {generateMenu(4)}
+          </Carousel.Item>
+          <Carousel.Item className="h-100 menu">
+            <h3>Piątek</h3>
+            {generateMenu(5)}
+          </Carousel.Item>
+          <Carousel.Item className="h-100 menu">
+            <h3>Sobota</h3>
+            {generateMenu(6)}
+          </Carousel.Item>
+          <Carousel.Item className="h-100 menu">
+            <h3>Niedziela</h3>
+            {generateMenu(7)}
           </Carousel.Item>
         </Carousel>
       </Container>
