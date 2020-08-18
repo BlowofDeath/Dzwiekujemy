@@ -5,7 +5,7 @@ import "./style.css";
 const EventComponent = (props) => {
   return (
     <Col lg={4} id="Wydarzenia">
-      <h2>Imprezy</h2>
+      <h2>Wydarzenia</h2>
       <Card>
         <Card.Img variant="top" src="css/img/dynamic/1.jpg" />
         <Card.Body>

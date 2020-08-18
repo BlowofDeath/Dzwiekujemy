@@ -1,10 +1,11 @@
 import React from "react";
 import "./style.css";
-import { Row, Card, Button, Col } from "react-bootstrap";
+import { Row, Card, Col } from "react-bootstrap";
 import BackgroudImage from "./img/2.jpg";
 import c1 from "./img/c1.jpg";
 import c2 from "./img/c2.jpg";
 import c3 from "./img/c3.jpg";
+import video from "./img/movie.mp4";
 
 const BoxComponent = (props) => {
   return (
@@ -13,7 +14,7 @@ const BoxComponent = (props) => {
       style={{ backgroundImage: `url(${BackgroudImage})` }}
     >
       <Col md={6} lg={4} id="KimJesteśmy">
-        <Card className="h-100">
+        <Card className="h-100 zoom">
           <Card.Img variant="top" src={c1} />
           <Card.Body>
             <Card.Title id="KimJesteśmy">Kim jesteśmy?</Card.Title>
@@ -27,36 +28,56 @@ const BoxComponent = (props) => {
               pyszną pajdę z wątróbką lub soczyste żeberka w sosie barbecue,
               napić się dobrego piwa i posłuchać muzyki na żywo.
             </Card.Text>
+            <div className="embed-responsive embed-responsive-16by9">
+              <video width="320" height="240" controls>
+                <source src={video} type="video/mp4" />
+              </video>
+            </div>
             {/* <Card.Link href="#">Rezerwuj stolik</Card.Link> */}
           </Card.Body>
         </Card>
       </Col>
       <Col md={6} lg={4} id="PracaIKontakt">
-        <Card className="h-100">
+        <Card className="h-100 zoom">
           <Card.Img variant="top" src={c2} />
           <Card.Body>
-            <Card.Title>Praca i Kontakt</Card.Title>
+            <Card.Title>Kontakt</Card.Title>
             <Card.Link href="mailto:biuro.dzwiekujemy@gmail.com">
               E-mail: biuro.dzwiekujemy@gmail.com
             </Card.Link>
             <br />
             <Card.Link href="tel:+48533463599">Telefon: 533 463 599</Card.Link>
+            <div>
+              <iframe
+                src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fdzwiekujemy%2F&width=114&layout=button&action=like&size=small&share=true&height=65&appId"
+                width="180"
+                height="65"
+                style={{ border: "none", overflow: "hidden" }}
+                scrolling="no"
+                frameBorder="0"
+                allow="encrypted-media"
+                title="Facebook"
+              ></iframe>
+            </div>
+
+            <Card.Title>Praca</Card.Title>
+            <Card.Text>Aktualnie nie poszukujemy</Card.Text>
           </Card.Body>
         </Card>
       </Col>
       <Col md={8} lg={4} id="JakDotrzeć">
-        <Card className="h-100">
+        <Card className="h-100 zoom">
           <Card.Img variant="top" src={c3} />
           <Card.Body>
-            <Card.Title>Jak dojechać?</Card.Title>
-            <div class="embed-responsive embed-responsive-4by3">
+            <Card.Title>Jak dotrzeć?</Card.Title>
+            <div className="embed-responsive embed-responsive-4by3">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9512.701242118324!2d19.5939975!3d53.4116908!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x6eacb414ef9c8a8f!2sDzwi%C4%99kujemy!5e0!3m2!1spl!2spl!4v1597657410922!5m2!1spl!2spl"
-                frameborder="0"
+                frameBorder="0"
                 style={{ border: 0 }}
-                allowfullscreen=""
+                allowFullScreen=""
                 aria-hidden="false"
-                tabindex="0"
+                tabIndex="0"
                 title="Jak dojechać?"
               ></iframe>
             </div>

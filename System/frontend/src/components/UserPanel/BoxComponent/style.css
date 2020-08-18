@@ -1,5 +1,5 @@
 div.box > div > div {
-  margin: 100px 40px;
+  margin: 20px 30px;
 }
 
 div.box > div > div > div {
@@ -15,8 +15,11 @@ div.box {
   background-size: cover;
 }
 
-div.card-body {
-  /* min-height: 600px; */
+div.card > img {
+  margin-bottom: -1.5px;
+  -webkit-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 div.card-body > a {
@@ -29,4 +32,27 @@ div.card-body > a:hover {
 
 div.box > div {
   padding-bottom: 200px;
+  margin-top: 100px;
+}
+
+.zoom {
+  transform-origin: 0 0;
+  transition: transform 0.25s, visibility 0.25s ease-in;
+}
+
+/* The Transformation */
+.zoom:hover {
+  transform: scale(1.03);
+}
+
+@media (max-width: 1382px) {
+  div.box > div > div {
+    margin: 80px 10px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  div.box > div {
+    margin-top: 20px;
+  }
 }

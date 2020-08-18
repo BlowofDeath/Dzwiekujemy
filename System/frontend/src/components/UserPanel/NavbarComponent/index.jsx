@@ -12,7 +12,7 @@ const NavbarComponent = () => {
           <Nav.Link href="#KimJesteśmy">Kim jesteśmy?</Nav.Link>
           <Nav.Link href="#Wydarzenia">Wydarzenia</Nav.Link>
           <Nav.Link href="#Menu">Menu</Nav.Link>
-          <Nav.Link href="#PracaIKontakt">Praca i Kontakt</Nav.Link>
+          <Nav.Link href="#PracaIKontakt">Kontakt i Praca</Nav.Link>
           <Nav.Link href="#JakDotrzeć">Jak dotrzeć?</Nav.Link>
           <Nav.Link href="#Galeria">Galeria</Nav.Link>
         </Nav>

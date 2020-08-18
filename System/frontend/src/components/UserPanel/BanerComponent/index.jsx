@@ -21,11 +21,7 @@ const BanerComponent = () => {
         />
       }
     >
-      <Carousel.Item>
-        <div
-          className="carousel-item active"
-          style={{ backgroundImage: `url(${CarouselImageOne})` }}
-        ></div>
+      <Carousel.Item style={{ backgroundImage: `url(${CarouselImageOne})` }}>
         <Carousel.Caption className="d-flex align-items-end justify-content-center">
           <div>
             <h3>Witamy na naszej stronie</h3>
@@ -35,11 +31,7 @@ const BanerComponent = () => {
           </div>
         </Carousel.Caption>
       </Carousel.Item>
-      <Carousel.Item>
-        <div
-          className="carousel-item active"
-          style={{ backgroundImage: `url(${CarouselImageTwo})` }}
-        ></div>
+      <Carousel.Item style={{ backgroundImage: `url(${CarouselImageTwo})` }}>
         <Carousel.Caption className="d-flex align-items-end justify-content-center">
           <div>
             <h3>Zaloguj się aby złożyć zamówienie!</h3>

@@ -38,4 +38,10 @@ tbody > tr:hover {
   div.menu {
     padding: 60px 5px;
   }
+
+  .carousel-menu > .carousel-control-next,
+  .carousel-menu > .carousel-control-prev {
+    width: 10%;
+    display: none;
+  }
 }

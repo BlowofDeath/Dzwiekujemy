@@ -19,29 +19,29 @@ const GalleryComponent = (props) => {
       id="Galeria"
       style={{ backgroundImage: `url(${BackgroudImage})` }}
     >
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g1} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} thumbnail="true">
+        <img src={g1} alt={""} className="zoom img-fluid " />
       </Col>
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g2} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} thumbnail="true">
+        <img src={g2} alt={""} className="zoom img-fluid " />
       </Col>
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g3} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} tthumbnail="true">
+        <img src={g3} alt={""} className="zoom img-fluid " />
       </Col>
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g4} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} thumbnail="true">
+        <img src={g4} alt={""} className="zoom img-fluid " />
       </Col>
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g5} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} thumbnail="true">
+        <img src={g5} alt={""} className="zoom img-fluid " />
       </Col>
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g6} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} thumbnail="true">
+        <img src={g6} alt={""} className="zoom img-fluid " />
       </Col>
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g7} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} thumbnail="true">
+        <img src={g7} alt={""} className="zoom img-fluid " />
       </Col>
-      <Col xs={12} sm={6} md={4} lg={3} thumbnail>
-        <img src={g8} class="zoom img-fluid " />
+      <Col xs={12} sm={6} md={4} lg={3} thumbnail="true">
+        <img src={g8} alt={""} className="zoom img-fluid " />
       </Col>
     </Row>
   );
