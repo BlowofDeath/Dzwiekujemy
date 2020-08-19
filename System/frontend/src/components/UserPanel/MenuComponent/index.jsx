@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Carousel, Col, Table } from "react-bootstrap";
+import { Container, Carousel, Col, Table, Button } from "react-bootstrap";
 import "./style.css";
 import menu from "./menu.json";
 import moment from "moment";
@@ -17,6 +17,7 @@ const days = [
 const category = ["Dania główne", "Zupy", "Zestaw Lunchowy"];
 
 const MenuComponent = (props) => {
+  const { addToCart } = props;
   const today = () => {
     const date = moment();
     return date.day();
@@ -41,11 +42,11 @@ const MenuComponent = (props) => {
           <h4 className="dish-category">{cat}</h4>
           <Table className="menu">
             <Thead />
-            <tbody>
+            <tbody className="menu">
               {menu.map((menuItem, index) => {
                 if (menuItem.category === cat && menuItem.dayOfWeek === day) {
                   let cartDisplay =
-                    thisDay === menuItem.dayOfWeek ? null : "d-none";
+                    thisDay === menuItem.dayOfWeek ? "" : "d-none";
                   return (
                     <tr key={index}>
                       <td>
@@ -54,15 +55,19 @@ const MenuComponent = (props) => {
                       </td>
                       <td>{menuItem.price} zł</td>
                       <td>
-                        <a
-                          className={`add-to-cart ${cartDisplay}`}
-                          href="#home"
+                        <Button
+                          variant="add-to-cart"
+                          className={`${cartDisplay}`}
+                          onClick={() => {
+                            addToCart(menuItem);
+                            alert("Dodano do koszyka");
+                          }}
                         >
                           <CartPlus className="d-inline d-sm-none " />
                           <span className="d-none d-sm-inline">
                             Dodaj do koszyka
                           </span>
-                        </a>
+                        </Button>
                       </td>
                     </tr>
                   );

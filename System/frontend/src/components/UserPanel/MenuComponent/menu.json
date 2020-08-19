@@ -62,5 +62,22 @@
     "price": 18.9,
     "dayOfWeek": 2,
     "category": "Zestaw Lunchowy"
+  },
+
+  {
+    "id": 7,
+    "dish": "Schabowy z ziemniakami",
+    "description": "dodatki i surówki",
+    "price": 18,
+    "dayOfWeek": 3,
+    "category": "Dania główne"
+  },
+  {
+    "id": 8,
+    "dish": "Burger wołowy",
+    "description": "z dodatkami",
+    "price": 19,
+    "dayOfWeek": 3,
+    "category": "Dania główne"
   }
 ]

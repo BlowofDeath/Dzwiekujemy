@@ -1,3 +1,7 @@
 .modal-content {
   font-family: "Baloo Tamma 2", cursive;
 }
+
+img.cart {
+  vertical-align: top;
+}
