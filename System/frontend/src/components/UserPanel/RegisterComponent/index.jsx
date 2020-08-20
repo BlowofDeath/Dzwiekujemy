@@ -1,10 +1,14 @@
 import React from "react";
 import "./style.css";
-import { Modal, Button, Form, Row, Col } from "react-bootstrap";
+import { Modal, Button, Form, Alert } from "react-bootstrap";
 import GoogleImg from "./img/google.svg";
 // import FacebookImg from "./img/facebook.png";
+import { useForm } from "react-hook-form";
 
 function RegisterComponent(props) {
+  const { handleSubmit, register, errors, watch } = useForm();
+  const onSubmit = (values) => console.log(values);
+
   return (
     <Modal
       {...props}
@@ -18,38 +22,53 @@ function RegisterComponent(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)} className="register">
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control
+              name="email"
+              placeholder="Email"
+              ref={register({
+                required: "Required",
+                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              })}
+            />
           </Form.Group>
+          {errors.email && <Alert variant="danger">Błędny adres email</Alert>}
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Hasło</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              type="password"
+              name="password"
+              placeholder="Minimum 8 znaków"
+              ref={register({
+                required: "Required",
+                pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+              })}
+            />
           </Form.Group>
+          {errors.password && (
+            <Alert variant="danger">
+              Hasło musi mieć przynajmniej osiem znaków, jedną literę i cyfrę.
+            </Alert>
+          )}
           <Form.Group controlId="formBasicPasswordConfirm">
             <Form.Label>Powtórz hasło</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control
+              type="password"
+              placeholder="Powtórz hasło"
+              name="confirmPassword"
+              ref={register({
+                required: "Required",
+                validate: (value) =>
+                  value === watch("password") || "Hasło się nie zgadza",
+              })}
+            />
           </Form.Group>
-          <Form.Group controlId="formBasicPasswordConfirm">
-            <Form.Label>Miasto</Form.Label>
-            <Form.Control type="text" placeholder="Miasto" />
-          </Form.Group>
-          <Row>
-            <Col>
-              <Form.Group controlId="formBasicPasswordConfirm">
-                <Form.Label>Ulica</Form.Label>
-                <Form.Control type="text" placeholder="Ulica" />
-              </Form.Group>
-            </Col>
-            <Col>
-              <Form.Group controlId="formBasicPasswordConfirm">
-                <Form.Label>Nr. domu/mieszkania</Form.Label>
-                <Form.Control type="text" placeholder="Nr. domu/mieszkania" />
-              </Form.Group>
-            </Col>
-          </Row>
+          {errors.confirmPassword && (
+            <Alert variant="danger">Hasło musi być takie samo</Alert>
+          )}
           <Form.Group controlId="formGoogleLoginButton">
             <Button variant="primary" type="submit">
               <img alt="Zaloguj z Google" src={GoogleImg} />

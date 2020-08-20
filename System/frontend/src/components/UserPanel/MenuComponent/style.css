@@ -45,6 +45,7 @@ tbody.menu > tr:hover {
 }
 
 .btn-add-to-cart {
+  font-size: 1em;
   color: white;
   padding: 6px;
   cursor: pointer;

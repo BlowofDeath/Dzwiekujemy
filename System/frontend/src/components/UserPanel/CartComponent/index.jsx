@@ -40,10 +40,13 @@ const CartComponent = (props) => {
     return (
       <>
         <Table>
-          <tbody>{cartArray}</tbody>
+          <tbody>
+            {cartArray}
+            <tr>
+              <td colSpan="5">Razem do zapłaty: {sum} zł</td>
+            </tr>
+          </tbody>
         </Table>
-        <span>Razem do zapłaty: {sum} zł</span>
-        <br />
       </>
     );
   };
@@ -65,7 +68,7 @@ const CartComponent = (props) => {
           Zamów
         </Button>{" "}
         <Button variant="primary" type="submit" onClick={() => clearCart()}>
-          wyczyść koszyk
+          Wyczyść koszyk
         </Button>
       </Modal.Body>
       <Modal.Footer>
