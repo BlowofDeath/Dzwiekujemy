@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Carousel, Col, Table, Button } from "react-bootstrap";
 import "./style.css";
 import menu from "./menu.json";
@@ -63,7 +63,7 @@ const MenuComponent = (props) => {
                             alert("Dodano do koszyka");
                           }}
                         >
-                          <CartPlus className="d-inline d-sm-none " />
+                          <CartPlus className="d-block d-sm-none" />
                           <span className="d-none d-sm-inline">
                             Dodaj do koszyka
                           </span>
@@ -94,26 +94,23 @@ const MenuComponent = (props) => {
     });
   };
 
+  const [controlsAreVisible, setControlsAreVisible] = useState(true);
+
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setControlsAreVisible(false);
+    } else setControlsAreVisible(true);
+  }, []);
+
   return (
     <Col lg={{ cols: 8, order: "last" }} id="Menu">
       <h2>Menu</h2>
       <Container fluid>
         <Carousel
           interval={null}
-          prevIcon={
-            <span
-              aria-hidden="true"
-              className="carousel-control-prev-icon d-md-inline-block"
-            />
-          }
-          nextIcon={
-            <span
-              aria-hidden="true"
-              className="carousel-control-next-icon d-md-inline-block"
-            />
-          }
           className="carousel-menu"
           defaultActiveIndex={today() - 1}
+          controls={controlsAreVisible}
         >
           {generateMenu()}
         </Carousel>

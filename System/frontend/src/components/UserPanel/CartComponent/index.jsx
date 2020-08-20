@@ -6,6 +6,14 @@ import deleteSvg from "./img/delete.svg";
 const CartComponent = (props) => {
   const { cart, show, setCartModalShow, removeFromCart, clearCart } = props;
 
+  const handleTransaction = (sum) => {
+    if (sum < 0) return null;
+    const confirm = window.confirm("Czy napewno chcesz złożyć zamówienie?");
+    if (confirm) {
+      console.log("złożono zamówienie");
+    }
+  };
+
   const generateCart = (cartArray) => {
     let sum = 0;
     cartArray = cartArray.map((item, index) => {
@@ -47,6 +55,9 @@ const CartComponent = (props) => {
             </tr>
           </tbody>
         </Table>
+        <Button variant="primary" onClick={(sum) => handleTransaction(sum)}>
+          Zamów
+        </Button>{" "}
       </>
     );
   };
@@ -64,9 +75,7 @@ const CartComponent = (props) => {
       </Modal.Header>
       <Modal.Body>
         {generateCart(cart)}
-        <Button variant="primary" type="submit">
-          Zamów
-        </Button>{" "}
+
         <Button variant="primary" type="submit" onClick={() => clearCart()}>
           Wyczyść koszyk
         </Button>
