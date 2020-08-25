@@ -1,3 +1,11 @@
-img.cart-delete {
+.cart-delete {
   cursor: pointer;
+}
+
+.cart-delete:hover {
+  color: rgb(104, 173, 175);
+}
+
+.cart-delete:focus:active {
+  color: rgb(233, 252, 180) !important;
 }

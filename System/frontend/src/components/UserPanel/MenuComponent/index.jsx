@@ -20,7 +20,8 @@ const MenuComponent = (props) => {
   const { addToCart } = props;
   const today = () => {
     const date = moment();
-    return date.day();
+    console.log(date.day());
+    return date.day() === 0 ? 7 : date.day();
   };
 
   const generateDayMenu = (day) => {
@@ -105,6 +106,7 @@ const MenuComponent = (props) => {
   return (
     <Col lg={{ cols: 8, order: "last" }} id="Menu">
       <h2>Menu</h2>
+
       <Container fluid>
         <Carousel
           interval={null}

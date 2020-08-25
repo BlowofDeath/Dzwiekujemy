@@ -1,24 +1,18 @@
 import React from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import "./style.css";
-import deleteSvg from "./img/delete.svg";
+import { ReactComponent as CartDelete } from "./img/delete.svg";
+import { chain, round } from "mathjs";
+import { useHistory } from "react-router-dom";
 
 const CartComponent = (props) => {
   const { cart, show, setCartModalShow, removeFromCart, clearCart } = props;
-
-  const handleTransaction = (sum) => {
-    if (sum < 0) return null;
-    const confirm = window.confirm("Czy napewno chcesz złożyć zamówienie?");
-    if (confirm) {
-      console.log("złożono zamówienie");
-    }
-  };
+  const history = useHistory();
 
   const generateCart = (cartArray) => {
     let sum = 0;
     cartArray = cartArray.map((item, index) => {
-      console.log(item.price, item.quanity);
-      sum += item.price * item.quanity;
+      sum = round(chain(item.price).multiply(item.quanity).add(sum).done(), 2);
       return (
         <tr key={index}>
           <td>{index + 1}</td>
@@ -30,10 +24,8 @@ const CartComponent = (props) => {
           <td>{item.price} zł</td>
           <td>{item.quanity}</td>
           <td>
-            <img
+            <CartDelete
               className="cart-delete"
-              src={deleteSvg}
-              alt="Usuń produkt"
               onClick={() => {
                 if (window.confirm("Czy napewno chcesz usunąć produkt?")) {
                   removeFromCart(item);
@@ -45,6 +37,20 @@ const CartComponent = (props) => {
       );
     });
 
+    const handleTransaction = (sum) => {
+      if (sum <= 0) alert("Włóż coś do koszyka, zanim złożysz zamówienie!");
+      else {
+        const confirm = window.confirm("Czy napewno chcesz złożyć zamówienie?");
+        if (confirm) {
+          setCartModalShow(false);
+          history.push({
+            pathname: "/transaction",
+            state: { cart },
+          });
+        }
+      }
+    };
+
     return (
       <>
         <Table>
@@ -55,8 +61,8 @@ const CartComponent = (props) => {
             </tr>
           </tbody>
         </Table>
-        <Button variant="primary" onClick={(sum) => handleTransaction(sum)}>
-          Zamów
+        <Button variant="primary" onClick={() => handleTransaction(sum)}>
+          Złóż zamówienie
         </Button>{" "}
       </>
     );
@@ -76,13 +82,18 @@ const CartComponent = (props) => {
       <Modal.Body>
         {generateCart(cart)}
 
-        <Button variant="primary" type="submit" onClick={() => clearCart()}>
+        <Button
+          variant="primary"
+          type="submit"
+          onClick={() =>
+            window.confirm("Czy na pewno chcesz wyczyścić koszyk?")
+              ? clearCart()
+              : null
+          }
+        >
           Wyczyść koszyk
         </Button>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Zamknij</Button>
-      </Modal.Footer>
     </Modal>
   );
 };

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import useLocalStorage from "./useLocalStorage";
+import useSessionStorage from "./useSessionStorage";
 
 const useCart = () => {
-  const [storageCart, setStorageCart] = useLocalStorage("cart", []);
+  const [storageCart, setStorageCart] = useSessionStorage("cart", []);
   const [cart, setCart] = useState(storageCart);
 
   const saveCart = (temp) => {

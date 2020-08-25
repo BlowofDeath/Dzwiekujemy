@@ -93,7 +93,7 @@
     "id": 10,
     "dish": "Schabowy z ziemniakami",
     "description": "dodatki i surówki",
-    "price": 18,
+    "price": 18.55,
     "dayOfWeek": 5,
     "category": "Dania główne"
   },
@@ -111,6 +111,14 @@
     "description": "",
     "price": 18.9,
     "dayOfWeek": 5,
+    "category": "Zestaw Lunchowy"
+  },
+  {
+    "id": 12,
+    "dish": "Pomidorowa + szkrzydełka glazurowe",
+    "description": "",
+    "price": 18.9,
+    "dayOfWeek": 7,
     "category": "Zestaw Lunchowy"
   }
 ]

@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useRouteMatch,
+} from "react-router-dom";
 import { Container, Row } from "react-bootstrap";
 import "./style.css";
 
@@ -12,6 +18,8 @@ import GalleryComponent from "./GalleryComponent";
 import LoginComponent from "./LoginComponent";
 import RegisterComponent from "./RegisterComponent";
 import CartComponent from "./CartComponent";
+import TransactionComponent from "./TransactionComponent";
+
 import useCart from "./../../hooks/useCart";
 
 import "./style.css";
@@ -23,6 +31,8 @@ const UserPanel = (props) => {
 
   const [cart, addToCart, removeFromCart, clearCart] = useCart();
 
+  const match = useRouteMatch();
+
   return (
     <>
       <Container fluid style={{ padding: 0 }} id="home">
@@ -32,18 +42,26 @@ const UserPanel = (props) => {
           setRegisterModalShow={setRegisterModalShow}
         />
         <BanerComponent />
-        <Container fluid>
-          <BoxComponent />
+        <Switch>
+          <Route exact path={`/transaction`}>
+            <TransactionComponent />
+          </Route>
 
-          <Row className="middle-row">
-            <MenuComponent addToCart={addToCart} />
-            <EventComponent />
-          </Row>
-          <GalleryComponent />
-          <Row>
-            <FooterComponent />
-          </Row>
-        </Container>
+          <Route path={`/`}>
+            <Container fluid>
+              <BoxComponent />
+
+              <Row className="middle-row">
+                <MenuComponent addToCart={addToCart} />
+                <EventComponent />
+              </Row>
+              <GalleryComponent />
+              <Row>
+                <FooterComponent />
+              </Row>
+            </Container>
+          </Route>
+        </Switch>
       </Container>
 
       <LoginComponent
