@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "dish": "Schabowy z ziemniakami",
+    "description": "dodatki i surówki",
+    "price": 18,
+    "dayOfWeek": 1,
+    "category": "Dania główne",
+    "quanity": 2
+  },
+  {
+    "id": 2,
+    "dish": "Burger wołowy",
+    "description": "z dodatkami",
+    "price": 19,
+    "dayOfWeek": 1,
+    "category": "Dania główne",
+    "quanity": 1
+  }
+]

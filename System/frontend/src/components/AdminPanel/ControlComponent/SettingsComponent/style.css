@@ -1,0 +1,7 @@
+span.order-status-on {
+  color: green;
+}
+
+span.order-status-off {
+  color: rgb(221, 19, 19);
+}

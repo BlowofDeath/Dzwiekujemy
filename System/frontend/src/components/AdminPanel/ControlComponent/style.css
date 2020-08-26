@@ -1,0 +1,13 @@
+div.control {
+  padding: 20px;
+}
+
+div.control > div > div {
+  background-color: rgb(178, 182, 189);
+  padding: 30px;
+  margin-top: 10px;
+}
+
+body {
+  background-color: rgb(68, 73, 83);
+}

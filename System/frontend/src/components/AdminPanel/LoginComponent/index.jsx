@@ -7,7 +7,7 @@ const LoginComponent = (props) => {
   const history = useHistory();
   const handleLogin = () => {
     //Succesfull login
-    window.localStorage.setItem("admin", JSON.stringify("jakishash"));
+    window.sessionStorage.setItem("admin", JSON.stringify("jakishash"));
     history.push("/admin");
   };
 
