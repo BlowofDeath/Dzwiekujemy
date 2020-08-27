@@ -23,7 +23,7 @@ const OrdersComponent = (props) => {
     console.log("Odrzucono zamówienie");
   };
   return (
-    <Col lg={7}>
+    <Col lg={8}>
       <h2>Zamówienia</h2>
       <Table striped bordered hover>
         <thead>
@@ -33,6 +33,7 @@ const OrdersComponent = (props) => {
             <th>Typ zamówienia</th>
             <th>Dania</th>
             <th>Cena</th>
+            <th>Uwagi</th>
           </tr>
         </thead>
         <tbody>
@@ -58,6 +59,7 @@ const OrdersComponent = (props) => {
               2x Burger wołowy <br /> 1x Zupa krupnik
             </td>
             <td>87.9 zł</td>
+            <td>Chciałbym dostać zamówienie za 3 godziny</td>
           </tr>
         </tbody>
       </Table>

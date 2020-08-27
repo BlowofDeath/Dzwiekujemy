@@ -5,7 +5,7 @@ import { Form, Col, Button } from "react-bootstrap";
 const SettingsComponent = (props) => {
   const [orderStatus, setOrderStatus] = useState(false);
   return (
-    <Col lg={4}>
+    <Col lg={3}>
       <h2>Ustawienia</h2>
       <Form>
         <Form.Group controlId="Control.day">

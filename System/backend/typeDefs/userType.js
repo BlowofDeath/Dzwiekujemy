@@ -7,10 +7,8 @@ const userType = gql`
   }
 
   type User {
-    index_number: Int!
+    id: ID!
     email: String!
-    first_name: String!
-    last_name: String!
     password: String!
   }
 

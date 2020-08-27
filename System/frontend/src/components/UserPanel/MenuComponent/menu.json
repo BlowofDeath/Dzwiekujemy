@@ -3,7 +3,7 @@
     "id": 1,
     "dish": "Schabowy z ziemniakami",
     "description": "dodatki i surówki",
-    "price": 18,
+    "price": 1800,
     "dayOfWeek": 1,
     "category": "Dania główne"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "dish": "Burger wołowy",
     "description": "z dodatkami",
-    "price": 19,
+    "price": 1900,
     "dayOfWeek": 1,
     "category": "Dania główne"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "dish": "Chłodnik",
     "description": "",
-    "price": 11,
+    "price": 1100,
     "dayOfWeek": 1,
     "category": "Zupy"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "dish": "Pomidorowa",
     "description": "",
-    "price": 9,
+    "price": 900,
     "dayOfWeek": 1,
     "category": "Zupy"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "dish": "Pomidorowa + szkrzydełka glazurowe",
     "description": "",
-    "price": 18.9,
+    "price": 1890,
     "dayOfWeek": 1,
     "category": "Zestaw Lunchowy"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "dish": "Chłodnik + burger wegetariański",
     "description": "",
-    "price": 18.9,
+    "price": 1890,
     "dayOfWeek": 1,
     "category": "Zestaw Lunchowy"
   },
@@ -51,7 +51,7 @@
     "id": 5,
     "dish": "Pomidorowa + szkrzydełka glazurowe",
     "description": "",
-    "price": 18.9,
+    "price": 1890,
     "dayOfWeek": 2,
     "category": "Zestaw Lunchowy"
   },
@@ -59,7 +59,7 @@
     "id": 6,
     "dish": "Chłodnik + burger wegetariański",
     "description": "",
-    "price": 18.9,
+    "price": 1890,
     "dayOfWeek": 2,
     "category": "Zestaw Lunchowy"
   },
@@ -68,7 +68,7 @@
     "id": 7,
     "dish": "Schabowy z ziemniakami",
     "description": "dodatki i surówki",
-    "price": 18,
+    "price": 1800,
     "dayOfWeek": 3,
     "category": "Dania główne"
   },
@@ -76,7 +76,7 @@
     "id": 8,
     "dish": "Burger wołowy",
     "description": "z dodatkami",
-    "price": 19,
+    "price": 1900,
     "dayOfWeek": 3,
     "category": "Dania główne"
   },
@@ -84,7 +84,7 @@
     "id": 9,
     "dish": "Chłodnik + burger wegetariański",
     "description": "",
-    "price": 18.9,
+    "price": 1890,
     "dayOfWeek": 4,
     "category": "Zestaw Lunchowy"
   },
@@ -93,7 +93,7 @@
     "id": 10,
     "dish": "Schabowy z ziemniakami",
     "description": "dodatki i surówki",
-    "price": 18.55,
+    "price": 1855,
     "dayOfWeek": 5,
     "category": "Dania główne"
   },
@@ -101,7 +101,7 @@
     "id": 11,
     "dish": "Burger wołowy",
     "description": "z dodatkami",
-    "price": 19,
+    "price": 1900,
     "dayOfWeek": 6,
     "category": "Dania główne"
   },
@@ -109,7 +109,7 @@
     "id": 12,
     "dish": "Pomidorowa + szkrzydełka glazurowe",
     "description": "",
-    "price": 18.9,
+    "price": 1890,
     "dayOfWeek": 5,
     "category": "Zestaw Lunchowy"
   },
@@ -117,7 +117,7 @@
     "id": 12,
     "dish": "Pomidorowa + szkrzydełka glazurowe",
     "description": "",
-    "price": 18.9,
+    "price": 1890,
     "dayOfWeek": 7,
     "category": "Zestaw Lunchowy"
   }

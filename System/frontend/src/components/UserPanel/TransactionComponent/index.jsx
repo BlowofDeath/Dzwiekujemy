@@ -19,7 +19,7 @@ const TransactionComponent = (props) => {
         <tr key={index}>
           <td>{cartItem.dish} </td>
           <td>{cartItem.quanity} szt.</td>
-          <td>{cartItem.price} zł</td>
+          <td>{cartItem.price / 100} zł</td>
         </tr>
       );
     });
@@ -32,7 +32,7 @@ const TransactionComponent = (props) => {
             <b>Suma końcowa</b>
           </td>
           <td></td>
-          <td>{sum} zł</td>
+          <td>{sum / 100} zł</td>
         </tr>
       </>
     );

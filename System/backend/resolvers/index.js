@@ -1,6 +1,12 @@
-import { composeResolvers } from "@graphql-tools/resolvers-composition";
+import { mergeResolvers } from "@graphql-tools/merge";
 import userResolvers from "./userResolvers";
+import mealResolvers from "./mealResolvers";
+import mealCategoryResolvers from "./mealCategoryResolvers";
 
-const composedResolvers = composeResolvers(userResolvers);
+const composedResolvers = mergeResolvers([
+  userResolvers,
+  mealResolvers,
+  mealCategoryResolvers,
+]);
 
 export default composedResolvers;

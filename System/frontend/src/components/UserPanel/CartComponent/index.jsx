@@ -21,7 +21,7 @@ const CartComponent = (props) => {
             {item.description}
           </td>
 
-          <td>{item.price} zł</td>
+          <td>{item.price / 100} zł</td>
           <td>{item.quanity}</td>
           <td>
             <CartDelete
@@ -57,7 +57,7 @@ const CartComponent = (props) => {
           <tbody>
             {cartArray}
             <tr>
-              <td colSpan="5">Razem do zapłaty: {sum} zł</td>
+              <td colSpan="5">Razem do zapłaty: {sum / 100} zł</td>
             </tr>
           </tbody>
         </Table>

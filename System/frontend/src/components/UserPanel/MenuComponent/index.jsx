@@ -54,7 +54,7 @@ const MenuComponent = (props) => {
                         {menuItem.dish} <br />
                         <i>{menuItem.description}</i>
                       </td>
-                      <td>{menuItem.price} zł</td>
+                      <td>{menuItem.price / 100} zł</td>
                       <td>
                         <Button
                           variant="add-to-cart"
