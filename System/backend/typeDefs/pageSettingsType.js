@@ -6,12 +6,12 @@ const pageSettingsType = gql`
   }
 
   type PageSettings {
-    dayOfWeek: String!
+    dayOfWeek: Int!
     online: Boolean!
   }
 
   type Mutation {
-    updatePageSettings(dayOfWeek: String!, online: Boolean!): PageSettings
+    updatePageSettings(dayOfWeek: Int!, online: Boolean!): PageSettings
   }
 `;
 

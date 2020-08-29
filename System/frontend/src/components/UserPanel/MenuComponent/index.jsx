@@ -4,7 +4,7 @@ import "./style.css";
 // import menu from "./menu.json";
 import moment from "moment";
 import { ReactComponent as CartPlus } from "./img/cartplus.svg";
-import { MEALS, MEAL_CATEGORIES, PAGE_SETTINGS } from "./gqlSchemas";
+import { MEALS, MEAL_CATEGORIES, PAGE_SETTINGS } from "./gql/gqlQueries";
 
 import { useQuery } from "@apollo/client";
 

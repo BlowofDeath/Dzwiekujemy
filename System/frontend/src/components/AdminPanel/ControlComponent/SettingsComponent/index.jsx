@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Form, Col, Button } from "react-bootstrap";
-import { PAGE_SETTINGS } from "./gqlSchemas";
-import { useQuery } from "@apollo/client";
+import { PAGE_SETTINGS } from "./gql/gqlQueries";
+import { UPDATE_PAGE_SETTINGS } from "./gql/gqlMutations";
+import { useQuery, useMutation } from "@apollo/client";
 
 const SettingsComponent = (props) => {
-  const [orderStatus, setOrderStatus] = useState(false);
+  const [onlineStatus, setOnlineStatus] = useState(false);
   const [dayOfWeekStatus, setDayOfWeekStatus] = useState(1);
   const {
     loading: loadingPageSettings,
@@ -13,9 +14,43 @@ const SettingsComponent = (props) => {
     data: dataPageSettings,
   } = useQuery(PAGE_SETTINGS);
 
+  const [
+    updatePageSettings,
+    { data, loading: mutationLoading, error: mutationError },
+  ] = useMutation(UPDATE_PAGE_SETTINGS);
+  if (mutationError) console.log(mutationError);
+
+  useEffect(() => {
+    if (!loadingPageSettings && dataPageSettings) {
+      setOnlineStatus(dataPageSettings.pageSettings.online);
+      setDayOfWeekStatus(dataPageSettings.pageSettings.dayOfWeek);
+    }
+  }, [dataPageSettings, loadingPageSettings]);
+
   if (errorPageSettings || loadingPageSettings) return null;
 
-  const { dayOfWeek, online } = dataPageSettings.pageSettings;
+  const updateDayOfWeek = (event) => {
+    const day = parseInt(event.target.value);
+    setDayOfWeekStatus(day);
+
+    updatePageSettings({
+      variables: {
+        online: onlineStatus,
+        dayOfWeek: parseInt(day),
+      },
+    });
+  };
+
+  const updateOnline = () => {
+    setOnlineStatus(!onlineStatus);
+
+    updatePageSettings({
+      variables: {
+        online: !onlineStatus,
+        dayOfWeek: dayOfWeekStatus,
+      },
+    });
+  };
 
   return (
     <Col lg={3}>
@@ -23,7 +58,11 @@ const SettingsComponent = (props) => {
       <Form>
         <Form.Group controlId="Control.day">
           <Form.Label>Dzień</Form.Label>
-          <Form.Control as="select" defaultValue={dayOfWeek}>
+          <Form.Control
+            as="select"
+            defaultValue={dataPageSettings.pageSettings.dayOfWeek}
+            onChange={(e) => updateDayOfWeek(e)}
+          >
             <option value="1">Poniedziałek</option>
             <option value="2">Wtorek</option>
             <option value="3">Środa</option>
@@ -37,17 +76,17 @@ const SettingsComponent = (props) => {
           <Form.Label>
             Zamówienia online:{" "}
             <span
-              className={orderStatus ? "order-status-on" : "order-status-off"}
+              className={onlineStatus ? "order-status-on" : "order-status-off"}
             >
-              {orderStatus ? "Włączone" : "Wyłączone"}
+              {onlineStatus ? "Włączone" : "Wyłączone"}
             </span>
           </Form.Label>
           <br />
           <Button
-            variant={!orderStatus ? "success" : "danger"}
-            onClick={() => setOrderStatus(!orderStatus)}
+            variant={!onlineStatus ? "success" : "danger"}
+            onClick={() => updateOnline()}
           >
-            {!orderStatus ? "Włącz" : "Wyłącz"}
+            {!onlineStatus ? "Włącz" : "Wyłącz"}
           </Button>
         </Form.Group>
       </Form>

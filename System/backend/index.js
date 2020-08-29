@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import cors from "cors";
 dotenv.config();
 import { ApolloServer } from "apollo-server-express";
 import bcrypt from "bcrypt";
@@ -8,6 +9,8 @@ import typeDefs from "./typeDefs";
 import resolvers from "./resolvers";
 import db from "./database/sqliteDB";
 const app = express();
+
+app.use(cors({}));
 
 import User from "./models/User.js";
 import Order from "./models/Order.js";
