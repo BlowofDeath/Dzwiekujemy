@@ -4,13 +4,12 @@ import User from "./User";
 
 const Order = db.define("Order", {
   email: Sequelize.STRING,
-  password: Sequelize.STRING,
   phone: Sequelize.STRING,
   city: Sequelize.STRING,
   street: Sequelize.STRING,
   houseNumber: Sequelize.STRING,
-  payment: Sequelize.STRING,
-  pickup: Sequelize.STRING,
+  payment: Sequelize.INTEGER,
+  pickup: Sequelize.INTEGER,
   status: Sequelize.STRING,
   comment: Sequelize.TEXT,
 });

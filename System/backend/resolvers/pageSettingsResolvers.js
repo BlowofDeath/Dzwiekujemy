@@ -4,7 +4,6 @@ const pageSettingsResolvers = {
   Query: {
     pageSettings: async (_, args, context) => {
       const config = await loadConfig("pageSettings");
-      console.log(config);
       return config;
     },
   },

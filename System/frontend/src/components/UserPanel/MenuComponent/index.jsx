@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Carousel, Col, Table, Button } from "react-bootstrap";
 import "./style.css";
-// import menu from "./menu.json";
-import moment from "moment";
 import { ReactComponent as CartPlus } from "./img/cartplus.svg";
 import { MEALS, MEAL_CATEGORIES, PAGE_SETTINGS } from "./gql/gqlQueries";
 
@@ -17,7 +15,6 @@ const days = [
   "Sobota",
   "Niedziela",
 ];
-//const category = ["Dania główne", "Zupy", "Zestaw Lunchowy"];
 
 const MenuComponent = (props) => {
   const {

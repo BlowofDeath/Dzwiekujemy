@@ -4,10 +4,69 @@ import "./style.css";
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
 import orders from "./orders.json";
 
+import { ORDERS } from "./gql/gqlQueries";
+import { useQuery } from "@apollo/client";
+
+const payment = [
+  "Płatność online, przelewy 24",
+  "Płatność kartą, przy odbiorze",
+  "Płatność gotówką przy odbiorze",
+];
+
+const pickup = ["Dowóz", "Osobity"];
+
 const OrdersComponent = (props) => {
+  const {
+    loading: loadingOrders,
+    error: errorOrders,
+    data: dataOrders,
+  } = useQuery(ORDERS);
+
   const generateOrderList = () => {
-    return orders.map((order, index) => {
-      return <div></div>;
+    return dataOrders.orders.map((order, index) => {
+      return (
+        <tr>
+          <td className="order-control">
+            <Button
+              block
+              variant="success"
+              onClick={() => acceptOrder(order.id)}
+            >
+              Przyjmij
+            </Button>
+            <br />
+            <Button
+              block
+              variant="danger"
+              onClick={() => discardOrder(order.id)}
+            >
+              Odrzuć
+            </Button>
+          </td>
+          <td>
+            {order.email} <br /> {order.phone} <br /> {order.city} <br />{" "}
+            {order.street}
+            {""}
+            {order.houseNumber}
+          </td>
+          <td>
+            {payment[order.payment]} <br />
+            {pickup[order.pickup]}
+          </td>
+          <td>
+            {order.details.map((detail, index) => {
+              return (
+                <>
+                  {detail.quanity}x {detail.dish}
+                  <br />
+                </>
+              );
+            })}
+          </td>
+          <td>{order.summaryPrice / 100} zł</td>
+          <td>{order.comment}</td>
+        </tr>
+      );
     });
   };
   const acceptOrder = (order) => {
@@ -22,6 +81,8 @@ const OrdersComponent = (props) => {
       );
     console.log("Odrzucono zamówienie");
   };
+
+  if (loadingOrders || errorOrders) return null;
   return (
     <Col lg={8}>
       <h2>Zamówienia</h2>
@@ -36,32 +97,7 @@ const OrdersComponent = (props) => {
             <th>Uwagi</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td className="order-control">
-              <Button block variant="success" onClick={() => acceptOrder(1)}>
-                Przyjmij
-              </Button>
-              <br />
-              <Button block variant="danger" onClick={() => discardOrder(1)}>
-                Odrzuć
-              </Button>
-            </td>
-            <td>
-              test@gmail.com <br /> 660013678 <br /> Kurzętnik <br />{" "}
-              Jagielońska 34/4
-            </td>
-            <td>
-              Płatność online, przelewy 24 <br />
-              Dowóz
-            </td>
-            <td>
-              2x Burger wołowy <br /> 1x Zupa krupnik
-            </td>
-            <td>87.9 zł</td>
-            <td>Chciałbym dostać zamówienie za 3 godziny</td>
-          </tr>
-        </tbody>
+        <tbody>{generateOrderList()}</tbody>
       </Table>
     </Col>
   );

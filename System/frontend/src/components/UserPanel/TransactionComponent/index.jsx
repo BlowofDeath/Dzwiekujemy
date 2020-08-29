@@ -75,9 +75,9 @@ const TransactionComponent = (props) => {
               <Form.Group as={Col} sm={6} controlId="formGridPaymant">
                 <Form.Label>Płatność</Form.Label>
                 <Form.Control as="select">
-                  <option>Płatność online, przelewy 24h</option>
-                  <option>Płatność kartą przy odbiorze</option>
-                  <option>Płatność gotówką przy odbiorze</option>
+                  <option value="0">Płatność online, przelewy 24h</option>
+                  <option value="1">Płatność kartą przy odbiorze</option>
+                  <option value="2">Płatność gotówką przy odbiorze</option>
                 </Form.Control>
               </Form.Group>
             </Form.Row>
@@ -85,8 +85,8 @@ const TransactionComponent = (props) => {
               <Form.Group as={Col} sm={6} controlId="formGridReception">
                 <Form.Label>Odbiór</Form.Label>
                 <Form.Control as="select">
-                  <option>Dowóz</option>
-                  <option>Osobity</option>
+                  <option value="0">Dowóz</option>
+                  <option value="1">Osobity</option>
                 </Form.Control>
               </Form.Group>
             </Form.Row>

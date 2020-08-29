@@ -29,9 +29,14 @@ async function startServer() {
     });
 
   //This makes that tables are dropped and created on server restart
-  // await db.sync({ alter: true }).then(() => {
-  //   console.log(`Database & tables created!`);
-  // });
+  // await db
+  //   .sync({ alter: true })
+  //   .then(() => {
+  //     console.log(`Database & tables created!`);
+  //   })
+  //   .catch((err) => {
+  //     console.log("Database sync error");
+  //   });
 
   //This create or alter table
   //   await db.sync({ alter: true }).then(async () => {
