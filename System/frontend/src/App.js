@@ -4,18 +4,27 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://localhost:4006/graphql",
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/admin">
-          <AdminPanel />
-        </Route>
-        <Route path="/">
-          <UserPanel />
-        </Route>
-      </Switch>
-    </Router>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          <Route path="/admin">
+            <AdminPanel />
+          </Route>
+          <Route path="/">
+            <UserPanel />
+          </Route>
+        </Switch>
+      </Router>
+    </ApolloProvider>
   );
 }
 

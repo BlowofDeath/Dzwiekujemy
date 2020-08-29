@@ -13,7 +13,6 @@ import User from "./models/User.js";
 import Order from "./models/Order.js";
 import OrderDetail from "./models/OrderDetail.js";
 import Meal from "./models/Meal.js";
-import PageSetting from "./models/PageSetting.js";
 import MealCategory from "./models/MealCategory.js";
 
 async function startServer() {
@@ -27,7 +26,7 @@ async function startServer() {
     });
 
   //This makes that tables are dropped and created on server restart
-  // await db.sync({ force: true }).then(() => {
+  // await db.sync({ alter: true }).then(() => {
   //   console.log(`Database & tables created!`);
   // });
 

@@ -5,13 +5,14 @@ const mealResolvers = {
   Query: {
     meals: async (_, args, context) => {
       const meals = await Meal.findAll();
-      console.log(meals);
       return meals;
     },
   },
   Meal: {
     category: async ({ MealCategoryId }, args, context) => {
-      const category = await MealCategory.findOne({ id: MealCategoryId });
+      const category = await MealCategory.findOne({
+        where: { id: MealCategoryId },
+      });
       return category.category;
     },
   },

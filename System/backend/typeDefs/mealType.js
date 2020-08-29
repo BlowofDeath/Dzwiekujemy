@@ -7,6 +7,7 @@ const mealType = gql`
 
   type Meal {
     id: ID!
+    dish: String!
     description: String
     price: Int!
     dayOfWeek: Int!

@@ -1,11 +1,13 @@
 import React from "react";
 import "./style.css";
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { useLocation, Redirect } from "react-router-dom";
 import { chain, round } from "mathjs";
 
 const TransactionComponent = (props) => {
   const location = useLocation();
+
+  if (!location.state) return <Redirect to="/" />;
   const { cart } = location.state;
 
   const generateCart = (cart) => {
@@ -25,7 +27,7 @@ const TransactionComponent = (props) => {
     });
 
     return (
-      <>
+      <tbody>
         {cart}
         <tr>
           <td>
@@ -34,7 +36,7 @@ const TransactionComponent = (props) => {
           <td></td>
           <td>{sum / 100} zł</td>
         </tr>
-      </>
+      </tbody>
     );
   };
 
