@@ -49,7 +49,6 @@ const MenuComponent = (props) => {
   const category = dataMealCategories.mealCategories;
   const thisDay = parseInt(dataPageSettings.pageSettings.dayOfWeek);
   const online = dataPageSettings.pageSettings.online;
-  console.log(thisDay);
 
   const { addToCart } = props;
 

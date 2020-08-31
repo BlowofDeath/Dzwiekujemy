@@ -6,3 +6,4 @@ System/frontend/package-lock.json
 Dokumentacja/Photoshop/Bez nazwy-1.psd
 Dokumentacja/Baza danych.mwb.bak
 System/backend/database.sqlite
+System/backend/.env

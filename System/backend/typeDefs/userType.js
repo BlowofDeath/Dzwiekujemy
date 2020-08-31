@@ -9,12 +9,24 @@ const userType = gql`
   type User {
     id: ID!
     email: String!
-    password: String!
+    phone: String
+    city: String
+    street: String
+    houseNumber: String
   }
 
   type Auth {
     user: User!
     token: String!
+  }
+
+  type Mutation {
+    registerUser(
+      email: String!
+      password: String!
+      confirmPassword: String!
+    ): Auth!
+    loginUser(email: String, password: String): Auth!
   }
 `;
 

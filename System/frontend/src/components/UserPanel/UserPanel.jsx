@@ -67,10 +67,12 @@ const UserPanel = (props) => {
       <LoginComponent
         show={loginModalShow}
         onHide={() => setLoginModalShow(false)}
+        setLoginModalShow={setLoginModalShow}
       />
       <RegisterComponent
         show={registerModalShow}
         onHide={() => setRegisterModalShow(false)}
+        setRegisterModalShow={setRegisterModalShow}
       />
       <CartComponent
         show={cartModalShow}

@@ -60,8 +60,7 @@ const TransactionComponent = (props) => {
 
   const onSubmit = (values) => {
     const { payment, pickup } = values;
-    console.log(values);
-    console.log(cart);
+
     createOrder({
       variables: {
         order: {
@@ -69,14 +68,17 @@ const TransactionComponent = (props) => {
           payment: parseInt(payment),
           pickup: parseInt(pickup),
         },
-        details: [
-          { quanity: 2, MealId: 1 },
-          { quanity: 1, MealId: 2 },
-        ],
+        details: cart.map((item) => ({
+          quanity: item.quanity,
+          MealId: item.id,
+        })),
       },
     }).then(
       () => console.log("Złożono zamówienie"),
-      (err) => alert("Wsytąpił problem ze złożeniem zamówienia")
+      (err) => {
+        alert("Wsytąpił problem ze złożeniem zamówienia");
+        console.log(err);
+      }
     );
   };
 
@@ -169,7 +171,9 @@ const TransactionComponent = (props) => {
               <Form.Group as={Col} sm={6} controlId="formGridPaymant">
                 <Form.Label>Płatność</Form.Label>
                 <Form.Control as="select" name="payment" ref={register()}>
-                  <option value="0">Płatność online, przelewy 24h</option>
+                  <option disabled value="0">
+                    Płatność online, przelewy 24h
+                  </option>
                   <option value="1">Płatność kartą przy odbiorze</option>
                   <option value="2">Płatność gotówką przy odbiorze</option>
                 </Form.Control>

@@ -4,14 +4,34 @@ import { Modal, Button, Form, Alert } from "react-bootstrap";
 import GoogleImg from "./img/google.svg";
 // import FacebookImg from "./img/facebook.png";
 import { useForm } from "react-hook-form";
+import { REGISTER_USER } from "./gql/gqlMutations";
+import { useMutation } from "@apollo/client";
 
 function RegisterComponent(props) {
   const { handleSubmit, register, errors, watch } = useForm();
-  const onSubmit = (values) => console.log(values);
+  const { setRegisterModalShow } = props;
+
+  const [registerUser] = useMutation(REGISTER_USER, {
+    onError: (error) => {
+      error = JSON.parse(JSON.stringify(error));
+      alert(error.message);
+    },
+    onCompleted: (data) => {
+      localStorage.setItem("user", JSON.stringify(data.registerUser));
+
+      alert("Użytkownik zarejestrowany pomyślnie.");
+      window.location.reload(false);
+    },
+  });
+  const onSubmit = (values) => {
+    const { email, password, confirmPassword } = values;
+    registerUser({ variables: { email, password, confirmPassword } });
+  };
 
   return (
     <Modal
-      {...props}
+      onHide={props.onHide}
+      show={props.show}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -70,7 +90,7 @@ function RegisterComponent(props) {
             <Alert variant="danger">Hasło musi być takie samo</Alert>
           )}
           <Form.Group controlId="formGoogleLoginButton">
-            <Button variant="primary" type="submit">
+            <Button variant="primary">
               <img alt="Zaloguj z Google" src={GoogleImg} />
               <span className="google">Zarejestruj z Google</span>
             </Button>

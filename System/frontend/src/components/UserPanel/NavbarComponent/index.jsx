@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import "./style.css";
+import { useHistory } from "react-router-dom";
 
 import CartImg from "./img/cart.svg";
 
 const NavbarComponent = (props) => {
+  const history = useHistory();
+  const item = localStorage.getItem("user");
+  const userValue = item ? JSON.parse(item) : undefined;
+  const [account, setAccount] = useState(userValue);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    window.location.reload(false);
+  };
+
   const { setCartModalShow, setLoginModalShow, setRegisterModalShow } = props;
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
@@ -19,10 +30,7 @@ const NavbarComponent = (props) => {
           <Nav.Link href="/#JakDotrzeć">Jak dotrzeć?</Nav.Link>
           <Nav.Link href="/#Galeria">Galeria</Nav.Link>
         </Nav>
-        {/* <Nav className="mr-right">
-          <Nav.Link href="#account">test@gmail.com</Nav.Link>
-          <Nav.Link href="#logout">Wyloguj</Nav.Link>
-        </Nav> */}
+
         <Nav.Link href="" onClick={() => setCartModalShow(true)}>
           <img
             src={CartImg}
@@ -32,17 +40,26 @@ const NavbarComponent = (props) => {
             width="25"
           />
         </Nav.Link>
-        <Nav className="mr-right">
-          <Nav.Link href="/#login" onClick={() => setLoginModalShow(true)}>
-            Zaloguj
-          </Nav.Link>
-          <Nav.Link
-            href="/#register"
-            onClick={() => setRegisterModalShow(true)}
-          >
-            Zarejestruj
-          </Nav.Link>
-        </Nav>
+        {account ? (
+          <Nav className="mr-right">
+            <Nav.Link href="#account">{account.user.email}</Nav.Link>
+            <Nav.Link href="#logout" onClick={() => handleLogout()}>
+              Wyloguj
+            </Nav.Link>
+          </Nav>
+        ) : (
+          <Nav className="mr-right">
+            <Nav.Link href="/#login" onClick={() => setLoginModalShow(true)}>
+              Zaloguj
+            </Nav.Link>
+            <Nav.Link
+              href="/#register"
+              onClick={() => setRegisterModalShow(true)}
+            >
+              Zarejestruj
+            </Nav.Link>
+          </Nav>
+        )}
       </Navbar.Collapse>
     </Navbar>
   );

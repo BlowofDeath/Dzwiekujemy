@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
@@ -21,12 +21,14 @@ const OrdersComponent = (props) => {
     loading: loadingOrders,
     error: errorOrders,
     data: dataOrders,
-  } = useQuery(ORDERS);
+  } = useQuery(ORDERS, { pollInterval: 20 * 1000 });
 
   const [
     acceptOrderMutation,
-    { loading: mutationLoading, error: mutationError },
+    { loading: mutationLoading, error: mutationError, data: mutationData },
   ] = useMutation(ACCEPT_ORDER);
+
+  const [triger, setTriger] = useState();
 
   const generateOrderList = () => {
     return dataOrders.orders.map((order, index) => {
