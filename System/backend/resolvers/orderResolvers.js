@@ -27,9 +27,38 @@ const orderResolvers = {
 
       return sum;
     },
-    email: async ({ UserId }, args, context) => {
-      const user = await User.findOne({ where: { id: UserId } });
-      return user.email;
+  },
+  Mutation: {
+    createOrder: async (_, { order, details }, context) => {
+      // console.log(order);
+      // console.log(details);
+
+      const orderTemp = await Order.create(
+        {
+          phone: order.phone,
+          city: order.city,
+          street: order.street,
+          houseNumber: order.houseNumber,
+          payment: order.payment,
+          pickup: order.pickup,
+          email: order.email,
+          comment: order.comment,
+          OrderDetails: details,
+          status: order.payment == 1 ? 2 : 1,
+        },
+        {
+          include: [OrderDetail],
+        }
+      );
+
+      return orderTemp;
+    },
+    acceptOrder: async (_, { id, accept }, context) => {
+      const order = await Order.findOne({ where: { id } });
+      order.status = accept ? 3 : 4;
+      await order.save();
+
+      return order;
     },
   },
 };

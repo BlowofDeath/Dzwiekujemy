@@ -5,7 +5,8 @@ import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
 import orders from "./orders.json";
 
 import { ORDERS } from "./gql/gqlQueries";
-import { useQuery } from "@apollo/client";
+import { ACCEPT_ORDER } from "./gql/gqlMutations";
+import { useQuery, useMutation } from "@apollo/client";
 
 const payment = [
   "Płatność online, przelewy 24",
@@ -22,10 +23,16 @@ const OrdersComponent = (props) => {
     data: dataOrders,
   } = useQuery(ORDERS);
 
+  const [
+    acceptOrderMutation,
+    { loading: mutationLoading, error: mutationError },
+  ] = useMutation(ACCEPT_ORDER);
+
   const generateOrderList = () => {
     return dataOrders.orders.map((order, index) => {
+      if (order.status !== 2) return null;
       return (
-        <tr>
+        <tr key={index}>
           <td className="order-control">
             <Button
               block
@@ -56,10 +63,10 @@ const OrdersComponent = (props) => {
           <td>
             {order.details.map((detail, index) => {
               return (
-                <>
+                <span key={index}>
                   {detail.quanity}x {detail.dish}
                   <br />
-                </>
+                </span>
               );
             })}
           </td>
@@ -70,23 +77,29 @@ const OrdersComponent = (props) => {
     });
   };
   const acceptOrder = (order) => {
-    window.confirm("Czy na pewno chcesz przyjąć zamówienie?");
-    console.log("Zaakceptowane");
+    if (window.confirm("Czy na pewno chcesz przyjąć zamówienie?"))
+      acceptOrderMutation({ variables: { id: order, accept: true } });
   };
 
   const discardOrder = (order) => {
-    if (window.confirm("Czy na pewno chcesz odrzucić zamówienie?"))
-      window.prompt(
+    if (window.confirm("Czy na pewno chcesz odrzucić zamówienie?")) {
+      let text = window.prompt(
         "Podaj powód odrzucenia zamówienia, który zostanie przekazany klientowi."
       );
-    console.log("Odrzucono zamówienie");
+      acceptOrderMutation({ variables: { id: order, accept: false } });
+    }
   };
 
-  if (loadingOrders || errorOrders) return null;
+  if (loadingOrders || errorOrders) {
+    console.log(errorOrders);
+    return null;
+  }
+
+  console.log(dataOrders);
   return (
     <Col lg={8}>
       <h2>Zamówienia</h2>
-      <Table striped bordered hover>
+      <Table striped bordered hover responsive>
         <thead>
           <tr>
             <th></th>

@@ -13,3 +13,7 @@ table.details {
   color: white;
   font-size: 1.1rem;
 }
+
+div.alert-danger {
+  margin-top: 4px;
+}
