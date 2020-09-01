@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 const orderType = gql`
   type Query {
-    orders: [Order]
+    orders(status: Int): [Order]
   }
 
   type Order {

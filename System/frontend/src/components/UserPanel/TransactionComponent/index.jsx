@@ -24,8 +24,11 @@ const TransactionComponent = (props) => {
     createOrder,
     { data: dataMutation, loading: loadingMutation, error: errorMutation },
   ] = useMutation(CREATE_ORDER);
+  let account = localStorage.getItem("user");
+  if (!location.state || !account) return <Redirect to="/" />;
+  account = JSON.parse(account);
+  const user = account.user;
 
-  if (!location.state) return <Redirect to="/" />;
   const { cart } = location.state;
 
   const generateCart = (cart) => {
@@ -74,7 +77,7 @@ const TransactionComponent = (props) => {
         })),
       },
     }).then(
-      () => console.log("Złożono zamówienie"),
+      () => alert("Złożono zamówienie"),
       (err) => {
         alert("Wsytąpił problem ze złożeniem zamówienia");
         console.log(err);
@@ -82,10 +85,6 @@ const TransactionComponent = (props) => {
     );
   };
 
-  // cart.map((item) => ({
-  //   quanity: item.quanity,
-  //   MealId: item.id,
-  // }))
   return (
     <Container fluid>
       <Row className="transaction">
@@ -95,7 +94,8 @@ const TransactionComponent = (props) => {
               <Form.Group as={Col} controlId="formGridEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
-                  placeholder="Enter email"
+                  disabled
+                  defaultValue={user.email}
                   name="email"
                   ref={register({
                     required: "Required",

@@ -8,7 +8,7 @@ import { LOGIN_USER } from "./gql/gqlMutations";
 import { useMutation } from "@apollo/client";
 
 function LoginComponent(props) {
-  const { setLoginModalShow } = props;
+  const { setLoginModalShow, setRegisterModalShow } = props;
   const { handleSubmit, register, errors, watch } = useForm();
   const [loginUser] = useMutation(LOGIN_USER, {
     onError: (error) => {
@@ -87,6 +87,16 @@ function LoginComponent(props) {
           </Form.Group> */}
           <Button variant="primary" type="submit">
             Zaloguj
+          </Button>
+          <Button
+            variant="primary"
+            style={{ marginLeft: 5 }}
+            onClick={() => {
+              setLoginModalShow(false);
+              setRegisterModalShow(true);
+            }}
+          >
+            Zarejestruj
           </Button>
         </Form>
       </Modal.Body>

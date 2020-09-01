@@ -6,7 +6,15 @@ import { chain, round } from "mathjs";
 import { useHistory } from "react-router-dom";
 
 const CartComponent = (props) => {
-  const { cart, show, setCartModalShow, removeFromCart, clearCart } = props;
+  const {
+    cart,
+    show,
+    setCartModalShow,
+    removeFromCart,
+    clearCart,
+    setLoginModalShow,
+  } = props;
+  const user = localStorage.getItem("user");
   const history = useHistory();
 
   const generateCart = (cartArray) => {
@@ -39,7 +47,11 @@ const CartComponent = (props) => {
 
     const handleTransaction = (sum) => {
       if (sum <= 0) alert("Włóż coś do koszyka, zanim złożysz zamówienie!");
-      else {
+      else if (!user) {
+        alert("Zaloguj się aby złożyć zamówienie");
+        setCartModalShow(false);
+        setLoginModalShow(true);
+      } else {
         const confirm = window.confirm("Czy napewno chcesz złożyć zamówienie?");
         if (confirm) {
           setCartModalShow(false);

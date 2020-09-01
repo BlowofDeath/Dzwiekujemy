@@ -9,7 +9,7 @@ import { useMutation } from "@apollo/client";
 
 function RegisterComponent(props) {
   const { handleSubmit, register, errors, watch } = useForm();
-  const { setRegisterModalShow } = props;
+  const { setRegisterModalShow, setLoginModalShow } = props;
 
   const [registerUser] = useMutation(REGISTER_USER, {
     onError: (error) => {
@@ -108,6 +108,16 @@ function RegisterComponent(props) {
           </Form.Group> */}
           <Button variant="primary" type="submit">
             Zarejestruj
+          </Button>
+          <Button
+            variant="primary"
+            style={{ marginLeft: 5 }}
+            onClick={() => {
+              setRegisterModalShow(false);
+              setLoginModalShow(true);
+            }}
+          >
+            Zaloguj
           </Button>
         </Form>
       </Modal.Body>

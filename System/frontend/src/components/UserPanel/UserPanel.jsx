@@ -53,7 +53,7 @@ const UserPanel = (props) => {
 
               <Row className="middle-row">
                 <MenuComponent addToCart={addToCart} />
-                <EventComponent />
+                {/* <EventComponent /> */}
               </Row>
               <GalleryComponent />
               <Row>
@@ -68,11 +68,13 @@ const UserPanel = (props) => {
         show={loginModalShow}
         onHide={() => setLoginModalShow(false)}
         setLoginModalShow={setLoginModalShow}
+        setRegisterModalShow={setRegisterModalShow}
       />
       <RegisterComponent
         show={registerModalShow}
         onHide={() => setRegisterModalShow(false)}
         setRegisterModalShow={setRegisterModalShow}
+        setLoginModalShow={setLoginModalShow}
       />
       <CartComponent
         show={cartModalShow}
@@ -80,6 +82,7 @@ const UserPanel = (props) => {
         cart={cart}
         removeFromCart={removeFromCart}
         clearCart={clearCart}
+        setLoginModalShow={setLoginModalShow}
       />
     </>
   );

@@ -5,7 +5,11 @@ import User from "../models/User";
 
 const orderResolvers = {
   Query: {
-    orders: async (_, args, context) => {
+    orders: async (_, { status }, context) => {
+      if (status) {
+        const orders = await Order.findAll({ where: { status } });
+        return orders;
+      }
       const orders = await Order.findAll();
       return orders;
     },
@@ -30,8 +34,8 @@ const orderResolvers = {
   },
   Mutation: {
     createOrder: async (_, { order, details }, context) => {
-      // console.log(order);
       // console.log(details);
+      console.log(order);
 
       const orderTemp = await Order.create(
         {
@@ -44,7 +48,7 @@ const orderResolvers = {
           email: order.email,
           comment: order.comment,
           OrderDetails: details,
-          status: order.payment == 1 ? 2 : 1,
+          status: order.payment === 0 ? 1 : 2,
         },
         {
           include: [OrderDetail],

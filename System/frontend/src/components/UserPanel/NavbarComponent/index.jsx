@@ -24,7 +24,7 @@ const NavbarComponent = (props) => {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link href="/#KimJesteśmy">Kim jesteśmy?</Nav.Link>
-          <Nav.Link href="/#Wydarzenia">Wydarzenia</Nav.Link>
+          {/* <Nav.Link href="/#Wydarzenia">Wydarzenia</Nav.Link> */}
           <Nav.Link href="/#Menu">Menu</Nav.Link>
           <Nav.Link href="/#PracaIKontakt">Kontakt i Praca</Nav.Link>
           <Nav.Link href="/#JakDotrzeć">Jak dotrzeć?</Nav.Link>
