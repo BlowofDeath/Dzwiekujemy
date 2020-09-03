@@ -121,9 +121,6 @@ function RegisterComponent(props) {
           </Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Zamknij</Button>
-      </Modal.Footer>
     </Modal>
   );
 }

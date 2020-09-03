@@ -9,16 +9,6 @@ img.zoom:hover {
   transform: scale(1.05);
 }
 
-.modal-header {
-  border-bottom: none;
-}
-.modal-title {
-  color: #000;
-}
-.modal-footer {
-  display: none;
-}
-
 div.gallery {
   padding: 50px;
   background-color: rgb(28, 34, 54);

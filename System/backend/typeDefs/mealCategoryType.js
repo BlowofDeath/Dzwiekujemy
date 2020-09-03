@@ -6,6 +6,7 @@ const mealCategoryType = gql`
   }
 
   type MealCategory {
+    id: ID!
     category: String!
     order: Int!
   }

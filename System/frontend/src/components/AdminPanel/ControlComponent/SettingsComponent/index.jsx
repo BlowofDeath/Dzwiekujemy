@@ -53,7 +53,7 @@ const SettingsComponent = (props) => {
   };
 
   return (
-    <Col lg={3}>
+    <Col lg={4}>
       <h2>Ustawienia</h2>
       <Form>
         <Form.Group controlId="Control.day">

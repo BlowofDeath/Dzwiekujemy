@@ -12,6 +12,28 @@ const mealType = gql`
     price: Int!
     dayOfWeek: Int!
     category: String!
+    MealCategoryId: ID!
+  }
+
+  type Mutation {
+    updateMeal(
+      id: ID!
+      dish: String!
+      description: String!
+      price: Int!
+      dayOfWeek: Int!
+      MealCategoryId: ID!
+      dayOfWeek: Int!
+    ): Meal!
+    deleteMeal(id: ID!): Meal
+    addMeal(
+      dish: String!
+      description: String!
+      price: Int!
+      dayOfWeek: Int!
+      MealCategoryId: ID!
+      dayOfWeek: Int!
+    ): Meal!
   }
 `;
 
