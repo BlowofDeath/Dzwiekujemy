@@ -17,6 +17,7 @@ const days = [
 ];
 
 const MenuComponent = (props) => {
+  const { handleEditData, editModalShow } = props;
   const {
     loading: loadingMeals,
     error: errorMeals,
@@ -33,7 +34,7 @@ const MenuComponent = (props) => {
 
   useEffect(() => {
     refetch();
-  }, [props.editModalShow, refetch, mealDeleteData]);
+  }, [editModalShow, refetch, mealDeleteData]);
 
   const [dayOfWeek, setDayOfWeek] = useState(0);
   const [category, setCategory] = useState(0);
@@ -43,7 +44,7 @@ const MenuComponent = (props) => {
 
   const menu = dataMeals.meals;
   const categories = dataMealCategories.mealCategories;
-  const { handleEditData } = props;
+
   return (
     <Col lg={12}>
       <h2>Menu</h2>

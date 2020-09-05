@@ -18,7 +18,7 @@ const days = [
   "Niedziela",
 ];
 
-const EditModalComponent = (props) => {
+const EditMenuModalComponent = (props) => {
   const { handleSubmit, register, errors, watch } = useForm();
   const { editModalShow, setEditModalShow, editModalData } = props;
   const {
@@ -171,4 +171,4 @@ const EditModalComponent = (props) => {
   );
 };
 
-export default EditModalComponent;
+export default EditMenuModalComponent;

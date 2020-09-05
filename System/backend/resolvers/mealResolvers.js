@@ -4,15 +4,16 @@ import MealCategory from "../models/MealCategory";
 const mealResolvers = {
   Query: {
     meals: async (_, args, context) => {
-      const meals = await Meal.findAll();
+      const meals = await Meal.findAll({ where: { archived: false } });
       return meals;
     },
   },
   Meal: {
     category: async ({ MealCategoryId }, args, context) => {
       const category = await MealCategory.findOne({
-        where: { id: MealCategoryId },
+        where: { id: MealCategoryId, archived: false },
       });
+      if (!category) return null;
       return category.category;
     },
   },
@@ -22,36 +23,34 @@ const mealResolvers = {
       { id, dish, description, price, MealCategoryId, dayOfWeek },
       context
     ) => {
-      await Meal.update(
-        { id, dish, description, price, MealCategoryId, dayOfWeek },
-        {
-          where: {
-            id,
-          },
-        }
-      );
+      const mealOriginal = await Meal.findOne({ where: { id } });
+      if (!mealOriginal) throw new Error("Potrawa nie istnieje");
+      if (mealOriginal.archived === true) return mealOriginal;
+      mealOriginal.archived = true;
+      await mealOriginal.save();
+      const meal = await Meal.create({
+        dish,
+        description,
+        price,
+        MealCategoryId,
+        dayOfWeek,
+      });
 
-      return await Meal.findOne({ where: { id } });
+      return meal;
     },
     deleteMeal: async (_, { id }, context) => {
-      try {
-        await Meal.destroy({
-          where: {
-            id,
-          },
-        });
-      } catch (err) {
-        throw new Error("Bład przy usuwaniu");
-      }
+      const meal = await Meal.findOne({ where: { id } });
+      if (!meal) throw new Error("Nie znaleziono");
+      meal.archived = true;
+      meal.save();
       return { id };
     },
     addMeal: async (
       _,
-      { id, dish, description, price, MealCategoryId, dayOfWeek },
+      { dish, description, price, MealCategoryId, dayOfWeek },
       context
     ) => {
       const meal = await Meal.create({
-        id,
         dish,
         description,
         price,

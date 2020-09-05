@@ -7,6 +7,7 @@ const Meal = db.define("Meal", {
   description: Sequelize.STRING,
   price: Sequelize.INTEGER,
   dayOfWeek: Sequelize.INTEGER,
+  archived: { type: Sequelize.BOOLEAN, defaultValue: false },
 });
 
 Meal.belongsTo(MealCategory);

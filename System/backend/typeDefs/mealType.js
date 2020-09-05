@@ -11,8 +11,8 @@ const mealType = gql`
     description: String
     price: Int!
     dayOfWeek: Int!
-    category: String!
-    MealCategoryId: ID!
+    category: String
+    MealCategoryId: ID
   }
 
   type Mutation {

@@ -10,6 +10,12 @@ const mealCategoryType = gql`
     category: String!
     order: Int!
   }
+
+  type Mutation {
+    updateMealCategory(id: ID!, category: String!, order: Int!): MealCategory!
+    deleteMealCategory(id: ID!): MealCategory
+    addMealCategory(category: String!, order: Int!): MealCategory!
+  }
 `;
 
 export default mealCategoryType;

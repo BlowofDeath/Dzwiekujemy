@@ -7,7 +7,7 @@ import AdminPanel from "./components/AdminPanel/AdminPanel";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://192.168.0.106:4006/graphql",
+  uri: "http://77.87.218.208:4006/graphql",
   cache: new InMemoryCache(),
 });
 

@@ -28,8 +28,6 @@ const OrdersComponent = (props) => {
     { loading: mutationLoading, error: mutationError, data: mutationData },
   ] = useMutation(ACCEPT_ORDER);
 
-  const [triger, setTriger] = useState();
-
   const generateOrderList = () => {
     return dataOrders.orders.map((order, index) => {
       if (order.status !== 2) return null;
